@@ -123,22 +123,22 @@ th     { background:#eee; } */
     function appendData(data) {
       var mainContainer = document.getElementById("myData");
 
-      for (var i = 0; i < data[19].districtData.length; i++) {
+      for (var i = 0; i < data[20].districtData.length; i++) {
         var tr = document.createElement('tr');
         var td = document.createElement('td');
-        td.innerHTML = data[19].districtData[i].district;
+        td.innerHTML = data[20].districtData[i].district;
         tr.appendChild(td);
         var td = document.createElement('td');
-        td.innerHTML =  data[19].districtData[i].confirmed ;
+        td.innerHTML =  data[20].districtData[i].confirmed ;
         tr.appendChild(td);
         var td = document.createElement('td');
-        td.innerHTML = data[19].districtData[i].active;
+        td.innerHTML = data[20].districtData[i].active;
         tr.appendChild(td);
         var td = document.createElement('td');
-        td.innerHTML = data[19].districtData[i].deceased;
+        td.innerHTML = data[20].districtData[i].deceased;
         tr.appendChild(td);
         var td = document.createElement('td');
-        td.innerHTML = data[19].districtData[i].recovered;
+        td.innerHTML = data[20].districtData[i].recovered;
         tr.appendChild(td);
 
 

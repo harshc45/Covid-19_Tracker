@@ -1,4 +1,4 @@
-<!doctype html>
+20<!doctype html>
 <html lang="en">
 
 <head>
@@ -42,25 +42,33 @@
     }
 
     body {
-    background: #74ebd5;
-    background: -webkit-linear-gradient(to right, #74ebd5, #ACB6E5);
-    background: linear-gradient(to right, #74ebd5, #ACB6E5);
-    min-height: 100vh;
+      background: #74ebd5;
+      background: -webkit-linear-gradient(to right, #74ebd5, #ACB6E5);
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      min-height: 100vh;
 
-}
-.tableFixHead          { overflow-y: auto; height: 500px; }
-.tableFixHead thead th { position: sticky; top: 0; }
+    }
 
-/* Just common table stuff. Really. */
-/* table  { border-collapse: collapse; width: 100%; }
+    .tableFixHead {
+      overflow-y: auto;
+      height: 500px;
+    }
+
+    .tableFixHead thead th {
+      position: sticky;
+      top: 0;
+    }
+
+    /* Just common table stuff. Really. */
+    /* table  { border-collapse: collapse; width: 100%; }
 th, td { padding: 8px 16px; }
 th     { background:#eee; } */
-.jumbotron {
-    padding: 2rem 1rem;
-    margin-bottom: 0;
-    margin-top: 2rem;
-    border-radius: .3rem;
-}
+    .jumbotron {
+      padding: 2rem 1rem;
+      margin-bottom: 0;
+      margin-top: 2rem;
+      border-radius: .3rem;
+    }
   </style>
   <!-- Custom styles for this template -->
   <link href="css/styles.css" rel="stylesheet">
@@ -74,19 +82,35 @@ th     { background:#eee; } */
   </nav>
 
 
+  <div id="sfc6zay6l6htzbq9e8sk1pq5celdzjmcudm"></div>
+  <script type="text/javascript" src="https://counter3.stat.ovh/private/counter.js?c=6zay6l6htzbq9e8sk1pq5celdzjmcudm&down=async" async></script>
+  <noscript><a href="https://www.freecounterstat.com" title="hit counters"><img src="https://counter3.stat.ovh/private/freecounterstat.php?c=6zay6l6htzbq9e8sk1pq5celdzjmcudm" border="0" title="hit counters" alt="hit counters"></a></noscript>
+
+
+<a href="https://www.freecounterstat.com" title="hit counters"><img src="https://counter3.stat.ovh/private/freecounterstat.php?c=6zay6l6htzbq9e8sk1pq5celdzjmcudm" border="0" title="hit counters" alt="hit counters"></a>
+<h6>Total visitors for this website</h6>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Welcome!</h1>
-      <p class="lead">This site helps you to keep a track of Covid-cases in the districts of Maharashtra.</p>
+      <p class="lead">This site helps you to keep a track of Covid-cases in the districts of Maharashtra and World.</p>
       <p class="lead">Made by Harshwardhan.</p>
     </div>
   </div>
 
 
 
+<!-- world stats -->
+
+
+
+
+
+
+<!-- maha stats -->
 
   <div class="table-responsive-sm tableFixHead ">
-    <table  class="table">
+
+    <table class="table">
       <thead class="thead-dark ">
         <tr>
           <th scope="col">District</th>
@@ -100,14 +124,28 @@ th     { background:#eee; } */
 
       </tbody>
     </table>
+    <h3 id="statsConfirmed">Total: </h3>
+    <h3 id="statsActive">Total: </h3>
+    <h3 id="statsDeaths">Total: </h3>
+    <h3 id="statsRecovered">Total: </h3>
+
+    <h6>*for any suggestions call on 9049301909.</h6>
   </div>
 
 
 
 
+<!-- world stats -->
 
 
 
+
+
+
+
+
+
+<!-- maha stats -->
   <script>
     fetch("https://api.covid19india.org/v2/state_district_wise.json")
       .then(function(response) {
@@ -122,28 +160,38 @@ th     { background:#eee; } */
 
     function appendData(data) {
       var mainContainer = document.getElementById("myData");
-
+      var totalConfirmed=0,totalDeaths=0,totalRecovered=0,totalActive=0;
       for (var i = 0; i < data[20].districtData.length; i++) {
         var tr = document.createElement('tr');
         var td = document.createElement('td');
         td.innerHTML = data[20].districtData[i].district;
         tr.appendChild(td);
         var td = document.createElement('td');
-        td.innerHTML =  data[20].districtData[i].confirmed ;
+        td.innerHTML = data[20].districtData[i].confirmed;
         tr.appendChild(td);
+        totalConfirmed = totalConfirmed+data[20].districtData[i].confirmed;
         var td = document.createElement('td');
         td.innerHTML = data[20].districtData[i].active;
         tr.appendChild(td);
+        totalActive=totalActive+data[20].districtData[i].active;
         var td = document.createElement('td');
         td.innerHTML = data[20].districtData[i].deceased;
         tr.appendChild(td);
+        totalDeaths=totalDeaths+data[20].districtData[i].deceased;
         var td = document.createElement('td');
         td.innerHTML = data[20].districtData[i].recovered;
         tr.appendChild(td);
+        totalRecovered=totalRecovered+data[20].districtData[i].recovered;
 
 
         mainContainer.appendChild(tr);
       }
+      console.log(totalConfirmed);
+      document.getElementById('statsConfirmed').innerHTML="Total Confirmed : " +totalConfirmed;
+      document.getElementById('statsActive').innerHTML="Total Active : " +totalActive;
+      document.getElementById('statsDeaths').innerHTML="Total Deaths : " +totalDeaths;
+      document.getElementById('statsRecovered').innerHTML="Total Recovered : " +totalRecovered;
+
     }
   </script>
 
